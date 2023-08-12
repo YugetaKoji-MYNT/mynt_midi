@@ -1,5 +1,6 @@
 import { Element } from './element.js'
 import { Convert } from './common/convert.js'
+import { Midi }    from './midi.js'
 
 export class Keyboard{
   constructor(options){
@@ -24,13 +25,28 @@ export class Keyboard{
   view_octave(){
     for(let i=0; i<Element.octave_count; i++){
       const html = new Convert(this.asset_octave).double_bracket({octave : i})
-      Element.elm_keyboard.insertAdjacentHTML('beforeend' ,html)
+      Element.elm_keyboard.insertAdjacentHTML('afterbegin' ,html)
     }
+    this.set_event()
     this.finish()
   }
+  set_event(){
+    Element.elm_keyboard.addEventListener('click' , Keyboard.key_click)
+  }
+
   finish(){
     if(this.options.callback){
       this.options.callback()
     }
+  }
+
+  static key_click(e){
+    const elm_oct = e.target.closest('.octave')
+    const elm_key = e.target.closest('[data-key]')
+    const oct = elm_oct.getAttribute('data-octave')
+    const key = elm_key.getAttribute('data-key')
+    console.log(oct,key)
+    Midi.play(`T450O${oct}${key}`)
+    // Midi.play('T450O7EGO8ECDG') // coin
   }
 }

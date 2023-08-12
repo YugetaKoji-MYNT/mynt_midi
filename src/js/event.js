@@ -1,6 +1,5 @@
 import { Element } from './element.js'
 
-
 export class Event{
   constructor(){
     // mouse-over
