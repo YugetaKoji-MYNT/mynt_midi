@@ -1,0 +1,81 @@
+.keyboard{
+  display:flex;
+  flex-direction:column;
+}
+
+.keyboard .octave{
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  width:var(--key-width);
+  height:calc(var(--key-height) * 7);
+}
+.keyboard .octave *{
+  position:absolute;
+  cursor:pointer;
+  border:1px solid black;
+}
+.keyboard .octave *:hover{
+  background-color:orange!important;
+}
+.keyboard .octave *:active{
+  background-color:red!important;
+}
+
+
+.keyboard .octave > *[data-type='key']{
+  width:100%;
+  height:var(--key-height);
+  left:0;
+  background-color:white;
+  z-index:1;
+  border-top:0;
+}
+.keyboard .octave:last-child > *[data-type='key']:last-child{
+  border-bottom:0;
+}
+.keyboard .octave > *[data-type='key'][data-key='b']{
+  top:calc(var(--key-height) * 0);
+}
+.keyboard .octave > *[data-type='key'][data-key='a']{
+  top:calc(var(--key-height) * 1);
+}
+.keyboard .octave > *[data-type='key'][data-key='g']{
+  top:calc(var(--key-height) * 2);
+}
+.keyboard .octave > *[data-type='key'][data-key='f']{
+  top:calc(var(--key-height) * 3);
+}
+.keyboard .octave > *[data-type='key'][data-key='e']{
+  top:calc(var(--key-height) * 4);
+}
+.keyboard .octave > *[data-type='key'][data-key='d']{
+  top:calc(var(--key-height) * 5);
+}
+.keyboard .octave > *[data-type='key'][data-key='c']{
+  top:calc(var(--key-height) * 6);
+}
+
+.keyboard .octave > *[data-type='flat']{
+  width:70%;
+  height:calc(var(--key-height) * 0.8);
+  top:50%;
+  left:0;
+  background-color:black;
+  z-index:2;
+}
+.keyboard .octave > *[data-type='flat'][data-key='-b']{
+  top:calc(var(--key-height) * 0 + var(--key-height) * 0.5);
+}
+.keyboard .octave > *[data-type='flat'][data-key='-a']{
+  top:calc(var(--key-height) * 1 + var(--key-height) * 0.5);
+}
+.keyboard .octave > *[data-type='flat'][data-key='-g']{
+  top:calc(var(--key-height) * 2 + var(--key-height) * 0.5);
+}
+.keyboard .octave > *[data-type='flat'][data-key='-e']{
+  top:calc(var(--key-height) * 4 + var(--key-height) * 0.5);
+}
+.keyboard .octave > *[data-type='flat'][data-key='-d']{
+  top:calc(var(--key-height) * 5 + var(--key-height) * 0.5);
+}

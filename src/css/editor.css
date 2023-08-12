@@ -1,0 +1,49 @@
+.editor{
+  width: calc(100% - var(--kwy-width));
+
+}
+.editor .octave{
+  width:100%;
+  height:calc(var(--key-height) * 7);
+  position:relative;
+}
+.editor .octave > *[data-type='key']{
+  width:100%;
+  height:var(--key-height);
+  border-bottom:1px solid black;
+}
+.editor .octave:last-child > *:last-child{
+  border-bottom:0;
+}
+.editor .octave > *[data-type='flat']{
+  --size-height: calc(var(--key-height) * 0.5);
+
+  width:100%;
+  height:var(--size-height);
+  position:absolute;
+  left:0;
+  background-color:#ccc;
+}
+.editor .octave > *[data-type='flat'][data-key='-b']{
+  top:calc(var(--key-height) * 1 - var(--size-height) * 0.5);
+}
+.editor .octave > *[data-type='flat'][data-key='-a']{
+  top:calc(var(--key-height) * 2 - var(--size-height) * 0.5);
+}
+.editor .octave > *[data-type='flat'][data-key='-g']{
+  top:calc(var(--key-height) * 3 - var(--size-height) * 0.5);
+}
+.editor .octave > *[data-type='flat'][data-key='-e']{
+  top:calc(var(--key-height) * 5 - var(--size-height) * 0.5);
+}
+.editor .octave > *[data-type='flat'][data-key='-d']{
+  top:calc(var(--key-height) * 6 - var(--size-height) * 0.5);
+}
+
+.editor .octave > *{
+  /* line-height: 20px; */
+  background: linear-gradient(to left, #888 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+}

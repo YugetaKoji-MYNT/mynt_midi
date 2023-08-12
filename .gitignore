@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+
+/trash/
+data/
+
+*.bak
+.vscode
