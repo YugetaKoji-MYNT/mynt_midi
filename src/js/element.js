@@ -19,7 +19,7 @@ export class Element{
   }
 
   static get octave_count(){
-    return 6
+    return 11
   }
 
 }
