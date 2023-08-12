@@ -6,4 +6,5 @@
 
   display:grid;
   grid-template-columns:var(--key-width) 1fr;
+  grid-template-rows:var(--key-height) 1fr;
 }

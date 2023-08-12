@@ -1,16 +1,22 @@
 .editor{
-  width: calc(100% - var(--kwy-width));
+  --color-line : #aaa;
+  width: 100%;
 
 }
 .editor .octave{
   width:100%;
   height:calc(var(--key-height) * 7);
   position:relative;
+  
+  overflow:hidden;
 }
 .editor .octave > *[data-type='key']{
   width:100%;
   height:var(--key-height);
-  border-bottom:1px solid black;
+  border-bottom:1px solid var(--color-line);
+}
+.editor .octave:first-child > *:first-child{
+  border-top:1px solid var(--color-line);
 }
 .editor .octave:last-child > *:last-child{
   border-bottom:0;
@@ -22,7 +28,7 @@
   height:var(--size-height);
   position:absolute;
   left:0;
-  background-color:#ccc;
+  background-color:#ddd;
 }
 .editor .octave > *[data-type='flat'][data-key='-b']{
   top:calc(var(--key-height) * 1 - var(--size-height) * 0.5);
@@ -42,8 +48,14 @@
 
 .editor .octave > *{
   /* line-height: 20px; */
-  background: linear-gradient(to left, #888 1px, white 1px);
+  /* background: linear-gradient(to left, #888 1px, white 1px);
   background-size: 100% 20px;
   background-origin: content-box;
+  background-attachment: local; */
+  background-color: white;
+  background-image: linear-gradient(to left, var(--color-line) 1px, transparent 1px);
+  background-size: var(--key-height) 100%;
+  /* background-origin: content-box;
   background-attachment: local;
+  background-repeat: repeat; */
 }

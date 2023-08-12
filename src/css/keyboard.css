@@ -22,7 +22,6 @@
   background-color:red!important;
 }
 
-
 .keyboard .octave > *[data-type='key']{
   width:100%;
   height:var(--key-height);
@@ -30,6 +29,9 @@
   background-color:white;
   z-index:1;
   border-top:0;
+}
+.keyboard .octave:first-child > *[data-type='key']:first-child{
+  border-top:1px solid black;
 }
 .keyboard .octave:last-child > *[data-type='key']:last-child{
   border-bottom:0;
@@ -57,7 +59,7 @@
 }
 
 .keyboard .octave > *[data-type='flat']{
-  width:70%;
+  width:50%;
   height:calc(var(--key-height) * 0.8);
   top:50%;
   left:0;

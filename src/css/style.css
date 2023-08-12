@@ -1,6 +1,7 @@
 @import 'main_frame.css';
 @import 'keyboard.css';
 @import 'editor.css';
+@import 'timeline.css';
 
 :root{
   --key-width:100px;
