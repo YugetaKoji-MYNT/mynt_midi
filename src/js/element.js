@@ -1,6 +1,9 @@
 export class Element{
   static get elm_midiFrame(){
-    return document.getElementById('mini_frame')
+    return document.querySelector('div.midi-frame')
+  }
+  static get elm_headerFrame(){
+    return document.querySelector('header.midi-frame')
   }
   static get elm_keyboard(){
     return this.elm_midiFrame.querySelector('.keyboard')

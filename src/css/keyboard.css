@@ -1,6 +1,12 @@
 .keyboard{
-  display:flex;
-  flex-direction:column;
+  /* display:flex;
+  flex-direction:column; */
+  overflow-y:scroll;
+  overflow-x:hidden;
+  -ms-overflow-style: none;
+}
+.keyboard::-webkit-scrollbar{
+  display:none;
 }
 
 .keyboard .octave{
@@ -15,7 +21,8 @@
   cursor:pointer;
   border:1px solid black;
 }
-.keyboard .octave *:hover{
+
+.keyboard .octave *[data-status='active']{
   background-color:orange!important;
 }
 .keyboard .octave *:active{

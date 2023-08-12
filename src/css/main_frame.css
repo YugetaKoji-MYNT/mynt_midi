@@ -1,10 +1,20 @@
-#mini_frame{
+
+.midi-frame{
   width:100%;
   /* height:400px; */
-  border:1px solid;
+  border-color:black;
+  border-style:solid;
+  border-width:1px;
+  /* border:1px solid black; */
   /* overflow-y:scroll; */
 
   display:grid;
   grid-template-columns:var(--key-width) 1fr;
-  grid-template-rows:var(--key-height) 1fr;
+  /* grid-template-rows:var(--key-height) 1fr; */
+}
+div.midi-frame{
+  height:500px;
+  /* overflow:hidden; */
+  /* overflow-x:hidden;
+  overflow-y:scroll; */
 }

@@ -1,10 +1,16 @@
 .editor{
-  --color-line : #aaa;
-  width: 100%;
-
+  width  : 100%;
+  height : var(--editor-height);
+  /* overflow-x : auto;
+  overflow-y : hidden; */
+  overflow:auto;
+  -ms-overflow-style: none;
+}
+.editor::-webkit-scrollbar{
+  display:none;
 }
 .editor .octave{
-  width:100%;
+  width:var(--editor-width);
   height:calc(var(--key-height) * 7);
   position:relative;
   
@@ -13,10 +19,10 @@
 .editor .octave > *[data-type='key']{
   width:100%;
   height:var(--key-height);
-  border-bottom:1px solid var(--color-line);
+  border-bottom:1px solid var(--editor-line);
 }
 .editor .octave:first-child > *:first-child{
-  border-top:1px solid var(--color-line);
+  border-top:1px solid var(--editor-line);
 }
 .editor .octave:last-child > *:last-child{
   border-bottom:0;
@@ -47,15 +53,11 @@
 }
 
 .editor .octave > *{
-  /* line-height: 20px; */
-  /* background: linear-gradient(to left, #888 1px, white 1px);
-  background-size: 100% 20px;
-  background-origin: content-box;
-  background-attachment: local; */
   background-color: white;
-  background-image: linear-gradient(to left, var(--color-line) 1px, transparent 1px);
-  background-size: var(--key-height) 100%;
-  /* background-origin: content-box;
-  background-attachment: local;
-  background-repeat: repeat; */
+  background-image: linear-gradient(to left, var(--editor-line) 1px, transparent 1px);
+  background-size: var(--time-size) 100%;
+}
+
+.editor .octave > *[data-status='active']{
+  background-color:#fbe9c7;
 }

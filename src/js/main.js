@@ -1,5 +1,6 @@
 import { Keyboard } from './keyboard.js'
 import { Editor }   from './editor.js'
+import { Event }    from './event.js'
 
 switch(document.readyState){
   case 'complete':
@@ -15,6 +16,7 @@ function Main(){
   new Keyboard({
     callback : (()=>{
       new Editor()
+      new Event()
     })
   })
 }
