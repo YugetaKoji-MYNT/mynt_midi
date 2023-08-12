@@ -14,6 +14,9 @@ export class Element{
   static get elm_editor(){
     return this.elm_midiFrame.querySelector('.editor')
   }
+  static get elm_timeline(){
+    return this.elm_headerFrame.querySelector('.timeline')
+  }
 
   static get octave_count(){
     return 6

@@ -1,8 +1,5 @@
 .editor{
   width  : 100%;
-  height : var(--editor-height);
-  /* overflow-x : auto;
-  overflow-y : hidden; */
   overflow:auto;
   -ms-overflow-style: none;
 }

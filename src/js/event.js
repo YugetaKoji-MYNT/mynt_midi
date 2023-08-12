@@ -3,12 +3,19 @@ import { Element } from './element.js'
 
 export class Event{
   constructor(){
+    // mouse-over
     Element.elm_keyboard.addEventListener('mouseover' , Event.mouseover_key)
     Element.elm_keyboard.addEventListener('mouseout'  , Event.clear_active)
     Element.elm_editor.addEventListener('mouseover'   , Event.mouseover_key)
     Element.elm_editor.addEventListener('mouseout'    , Event.clear_active)
+    // scroll
+    Element.elm_editor.addEventListener('scroll'      , Event.scroll_sync_editor)
+    Element.elm_keyboard.addEventListener('scroll'    , Event.scroll_sync_keyboard)
+    Element.elm_timeline.addEventListener('scroll'    , Event.scroll_sync_timeline)
   }
 
+  // ----------
+  // mouse-over
   static mouseover_key(e){
     const elm_octave = e.target.closest('.octave')
     const elm_key    = e.target.closest('[data-key]')
@@ -31,4 +38,35 @@ export class Event{
       active.removeAttribute('data-status')
     }
   }
+
+  // ----------
+  // scroll
+  static scroll_sync_editor(e){
+    const pos = {
+      x : e.target.scrollLeft,
+      y : e.target.scrollTop,
+    }
+    Event.scroll_sync(pos)
+  }
+  static scroll_sync_keyboard(e){
+    const pos = {
+      x : Element.elm_editor.scrollLeft,
+      y : e.target.scrollTop,
+    }
+    Event.scroll_sync(pos)
+  }
+  static scroll_sync_timeline(e){
+    const pos = {
+      x : e.target.scrollLeft,
+      y : Element.elm_editor.scrollTop,
+    }
+    Event.scroll_sync(pos)
+  }
+  static scroll_sync(pos){
+    Element.elm_keyboard.scrollTop  = pos.y
+    Element.elm_timeline.scrollLeft = pos.x
+    Element.elm_editor.scrollTop    = pos.y
+    Element.elm_editor.scrollLeft   = pos.x
+  }
+
 }
