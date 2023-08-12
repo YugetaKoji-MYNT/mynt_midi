@@ -17,6 +17,7 @@ export class Event{
   // ----------
   // mouse-over
   static mouseover_key(e){
+    if(!e.target.closest('.octave')){return}
     const elm_octave = e.target.closest('.octave')
     const elm_key    = e.target.closest('[data-key]')
     const octave_num = elm_octave.getAttribute('data-octave')

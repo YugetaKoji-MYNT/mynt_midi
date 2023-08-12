@@ -24,4 +24,8 @@ export class Editor{
       editor_octave.appendChild(div)
     }
   }
+
+  static set_addSize(size){console.log(size)
+    Element.elm_editor.style.setProperty('padding-right', `${size}px`, '')
+  }
 }

@@ -2,6 +2,7 @@
   width  : 100%;
   overflow:auto;
   -ms-overflow-style: none;
+  /* padding-right:var(--time-size); */
 }
 .editor::-webkit-scrollbar{
   display:none;

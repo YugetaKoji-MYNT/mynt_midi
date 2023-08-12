@@ -1,15 +1,16 @@
 @import 'main_frame.css';
 @import 'keyboard.css';
 @import 'editor.css';
+@import 'timeline.css';
 @import 'header.css';
 
 :root{
   --key-width     : 100px;
   --key-height    : 30px;
   --editor-line   : #aaa;
-  --editor-width  : 120%;
+  --editor-width  : 1000px;
   --editor-height : 500px;
-  --time-size     : 40px;
+  --time-size     : 50px;
 }
 
 html,body{
