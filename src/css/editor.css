@@ -2,7 +2,6 @@
   width  : 100%;
   overflow:auto;
   -ms-overflow-style: none;
-  /* padding-right:var(--time-size); */
 }
 .editor::-webkit-scrollbar{
   display:none;
@@ -33,22 +32,23 @@
   position:absolute;
   left:0;
   background-color:#ddd;
+  transform: translateY(-50%);
 }
-.editor .octave > *[data-type='flat'][data-key='-b']{
-  top:calc(var(--key-height) * 1 - var(--size-height) * 0.5);
+/* .editor .octave > *[data-type='flat'][data-key='b-']{
+  top:calc(var(--key-height) * 1);
 }
-.editor .octave > *[data-type='flat'][data-key='-a']{
-  top:calc(var(--key-height) * 2 - var(--size-height) * 0.5);
+.editor .octave > *[data-type='flat'][data-key='a-']{
+  top:calc(var(--key-height) * 2);
 }
-.editor .octave > *[data-type='flat'][data-key='-g']{
-  top:calc(var(--key-height) * 3 - var(--size-height) * 0.5);
+.editor .octave > *[data-type='flat'][data-key='g-']{
+  top:calc(var(--key-height) * 3);
 }
-.editor .octave > *[data-type='flat'][data-key='-e']{
-  top:calc(var(--key-height) * 5 - var(--size-height) * 0.5);
+.editor .octave > *[data-type='flat'][data-key='e-']{
+  top:calc(var(--key-height) * 5);
 }
-.editor .octave > *[data-type='flat'][data-key='-d']{
-  top:calc(var(--key-height) * 6 - var(--size-height) * 0.5);
-}
+.editor .octave > *[data-type='flat'][data-key='d-']{
+  top:calc(var(--key-height) * 6);
+} */
 
 .editor .octave > *{
   background-color: white;
