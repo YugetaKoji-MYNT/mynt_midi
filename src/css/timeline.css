@@ -1,4 +1,4 @@
-header.midi-frame{
+section.midi-frame{
   height : var(--key-height);
   border-bottom-width:0;
 }
@@ -13,29 +13,27 @@ header.midi-frame{
   position:relative;
   overflow-x : auto;
   -ms-overflow-style: none;
-  /* padding-right:var(--time-size); */
-  /* width : var(--editor-width); */
 }
 .timeline::before,
 .timeline::after{
   content:'';
   display:block;
-  width:var(--editor-width);
+  width:var(--time-sec);
   position:absolute;
   bottom: 0;
   left:0;
   background-image: linear-gradient(to left, var(--editor-line) 1px, transparent 1px);
-  margin-right:var(--time-size);
+  margin-right:var(--time-msec);
 }
 .timeline::before{
   height:40%;
   background-color: white;
-  background-size: var(--time-size) 50%;
+  background-size: var(--time-msec) 50%;
 }
 .timeline::after{
   height:20%;
   background-color: white;
-  background-size: calc(var(--time-size) / 5) 50%;
+  background-size: calc(var(--time-msec) / 5) 50%;
 }
 .timeline::-webkit-scrollbar{
   display: none;

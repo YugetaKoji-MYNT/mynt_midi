@@ -4,14 +4,15 @@
 @import 'timeline.css';
 @import 'header.css';
 @import 'control.css';
+@import 'string.css';
 
 :root{
   --key-width     : 100px;
   --key-height    : 30px;
   --editor-line   : #aaa;
-  --editor-width  : 900px;
   --editor-height : 500px;
-  --time-size     : 50px;
+  --time-sec      : 900px;
+  --time-msec     : 50px;
   --octave-size   : 20px;
 }
 
@@ -27,6 +28,8 @@ html,body{
   
 body{
   border              : 1px solid transparent;
+  min-width:1000px;
+  background: linear-gradient(135deg, #fff, #aaa);
 }
 
 *, *:before, *:after {
@@ -78,4 +81,8 @@ input[type='number']{
 
 .right{
   text-align         : right;
+}
+
+input,select,textarea{
+  outline:none;
 }

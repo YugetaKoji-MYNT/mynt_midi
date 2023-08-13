@@ -32,9 +32,12 @@
   width:100%;
   height:var(--key-height);
   left:0;
-  background-color:white;
   z-index:1;
   border-top:0;
+  border-radius:0 2px 2px 0;
+  /* background: linear-gradient(135deg, #fff, #aaa); */
+  background-color:white;
+  /* background-color: linear-gradient(#fff 50%, #eee); */
 }
 .keyboard .octave:first-child > *[data-type='key']:first-child{
   border-top:1px solid black;
@@ -71,6 +74,7 @@
   left:0;
   background-color:black;
   z-index:2;
+  border-radius:0 4px 4px 0;
 }
 .keyboard .octave > *[data-type='flat'][data-key='b-']{
   top:calc(var(--key-height) * 0 + var(--key-height) * 0.5);

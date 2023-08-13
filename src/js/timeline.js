@@ -18,18 +18,18 @@ export class Timeline{
   }
 
   static get sec(){
-    const size = Css.get_css(':root','--editor-width').replace('px' , '')
+    const size = Css.get_css(':root','--time-sec').replace('px' , '')
     return Number(size)
   }
   static get msec(){
-    const size = Css.get_css(':root','--time-size').replace('px' , '')
+    const size = Css.get_css(':root','--time-msec').replace('px' , '')
     return Number(size)
   }
   static set sec(size){
-    Css.set_css(':root','--editor-width' , `${size}px`)
+    Css.set_css(':root','--time-sec' , `${size}px`)
   }
   static set msec(size){
-    Css.set_css(':root','--time-size', `${size}px`)
+    Css.set_css(':root','--time-msec', `${size}px`)
     return Number(size)
   }
   static get elm_numbers(){

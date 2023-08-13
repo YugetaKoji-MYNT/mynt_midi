@@ -3,7 +3,7 @@ export class Element{
     return document.querySelector('div.midi-frame')
   }
   static get elm_headerFrame(){
-    return document.querySelector('header.midi-frame')
+    return document.querySelector('section.midi-frame')
   }
   static get elm_keyboard(){
     return this.elm_midiFrame.querySelector('.keyboard')
