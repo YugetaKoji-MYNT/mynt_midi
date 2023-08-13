@@ -24,9 +24,14 @@
         <p class='title'>Time</p>
         <input type='number' step='0.1' name='time'/>
       </div>
-      <div class='input-group' name='tempo'>
+      <!-- <div class='input-group' name='tempo'>
         <p class='title'>Tempo</p>
         <input type='number' step='1' name='tempo'/>
+      </div> -->
+      <div name='play'>
+        <svg class='start' src='img/icon/start.svg'></svg>
+        <svg class='stop' src='img/icon/stop.svg'></svg>
+        <svg class='play' src='img/icon/play.svg'></svg>
       </div>
     </div>
   </header>
@@ -35,11 +40,19 @@
     <textarea name='midi-string'></textarea>
   </div>
 
-  <section class='midi-frame'>
+  <div class='midi-frame' data-type='timeline'>
     <div class='keyboard-head'></div>
     <div class='timeline'></div>
-  </section>
-  <div class='midi-frame'>
+  </div>
+  <div class='midi-frame' data-type='timebar'>
+    <div class='timebar-left'></div>
+    <div class='timebar-area'>
+      <div class='timebar-scroll'>
+        <svg class='timebar' src='img/icon/timebar.svg'></svg>
+      </div>
+    </div>
+  </div>
+  <div class='midi-frame' data-type='editor'>
     <div class='keyboard'></div>
     <div class='editor'></div>
   </div>

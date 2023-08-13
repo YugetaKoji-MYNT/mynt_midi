@@ -52,3 +52,16 @@
   color:#aaa;
 }
 
+.controls [name='play']{
+  display:flex;
+  gap:10px;
+}
+.controls [name='play'] svg{
+  width:24px;
+  height:24px;
+  fill:black;
+  cursor:pointer;
+}
+.controls [name='play'] svg:hover{
+  fill:red;
+}

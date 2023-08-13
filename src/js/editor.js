@@ -1,4 +1,5 @@
 import { Element } from './element.js'
+import { Timebar } from './timebar.js'
 
 export class Editor{
   constructor(){
@@ -37,5 +38,6 @@ export class Editor{
 
   static set_addSize(size){
     Element.elm_editor.style.setProperty('padding-right', `${size}px`, '')
+    Timebar.set_width(Element.elm_editor.scrollWidth + size)
   }
 }

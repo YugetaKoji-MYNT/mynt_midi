@@ -63,9 +63,10 @@ export class Event{
     Event.scroll_sync(pos)
   }
   static scroll_sync(pos){
-    Element.elm_keyboard.scrollTop  = pos.y
-    Element.elm_timeline.scrollLeft = pos.x
-    Element.elm_editor.scrollTop    = pos.y
-    Element.elm_editor.scrollLeft   = pos.x
+    Element.elm_keyboard.scrollTop      = pos.y
+    Element.elm_timeline.scrollLeft     = pos.x
+    Element.elm_editor.scrollTop        = pos.y
+    Element.elm_editor.scrollLeft       = pos.x
+    Element.elm_timebar_area.scrollLeft = pos.x
   }
 }

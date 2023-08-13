@@ -1,0 +1,32 @@
+.timebar-area{
+  overflow-y:visible;
+  overflow-x:hidden;
+  -ms-overflow-style: none;
+}
+.timebar-area::-webkit-scrollbar{
+  display:none;
+}
+.timebar-area .timebar{
+  width:40px;
+  height:40px;
+  position:absolute;
+  top:50%;
+  left:0;
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  
+}
+.timebar-area .timebar:hover{
+  fill:orange;
+}
+.timebar-area .timebar:active{
+  fill:red;
+}
+.timebar-area .timebar-scroll{
+  position:relative;
+  height:100%;
+}
+
+.timebar-left{
+  border-right:1px solid black;
+}

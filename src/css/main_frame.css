@@ -1,4 +1,3 @@
-
 .midi-frame{
   width:100%;
   border-color:black;
@@ -9,9 +8,14 @@
   grid-template-columns:var(--key-width) 1fr;
   background-color:white;
 }
-div.midi-frame{
+.midi-frame[data-type='timeline']{
+  height:50px;
+}
+.midi-frame[data-type='timebar']{
+  height:30px;
+  border:1px solid transparent;
+  background-color:transparent;
+}
+.midi-frame[data-type='editor']{
   height:var(--editor-height);
-  /* overflow:hidden; */
-  /* overflow-x:hidden;
-  overflow-y:scroll; */
 }

@@ -5,13 +5,14 @@
 @import 'header.css';
 @import 'control.css';
 @import 'string.css';
+@import 'timebar.css';
 
 :root{
   --key-width     : 100px;
   --key-height    : 30px;
   --editor-line   : #aaa;
   --editor-height : 500px;
-  --time-sec      : 900px;
+  --time-sec      : 1200px;
   --time-msec     : 50px;
   --octave-size   : 20px;
 }
