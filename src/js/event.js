@@ -16,9 +16,9 @@ export class Event{
   // ----------
   // mouse-over
   static mouseover_key(e){
-    if(!e.target.closest('.octave')){return}
     const elm_octave = e.target.closest('.octave')
     const elm_key    = e.target.closest('[data-key]')
+    if(!elm_octave || !elm_key){return}
     const octave_num = elm_octave.getAttribute('data-octave')
     const key        = elm_key.getAttribute('data-key')
     Event.set_active(octave_num,key)
@@ -68,5 +68,4 @@ export class Event{
     Element.elm_editor.scrollTop    = pos.y
     Element.elm_editor.scrollLeft   = pos.x
   }
-
 }

@@ -26,4 +26,8 @@ export class Element{
     return document.querySelector(`[name='oscillator_type']`).value
   }
 
+  static get elm_time(){
+    return document.querySelector(`input[name='time']`)
+  }
+
 }

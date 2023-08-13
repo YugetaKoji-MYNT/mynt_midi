@@ -2,6 +2,7 @@ import { Keyboard }  from './keyboard.js'
 import { Editor }    from './editor.js'
 import { Event }     from './event.js'
 import { Timeline }  from './timeline.js'
+import { Controls }  from './controls.js'
 import { SvgImport } from './common/svg_import.js'
 
 switch(document.readyState){
@@ -18,8 +19,9 @@ function Main(){
   new Keyboard({
     callback : (()=>{
       new Editor()
-      new Event()
       new Timeline()
+      new Event()
+      new Controls()
     })
   })
   new SvgImport()

@@ -2,8 +2,16 @@ import { Element } from './element.js'
 
 export class Editor{
   constructor(){
+    Editor.clear()
     this.set_octove()
   }
+
+  // エディタ内の表示をクリアする
+  static clear(){
+    Element.elm_editor.innerHTML = ''
+  }
+
+  // オクターブ毎の表示処理
   set_octove(){
     const keyboard_octaves = Element.elm_octaves
     for(const keyboard_octave of keyboard_octaves){
@@ -15,6 +23,8 @@ export class Editor{
       this.set_dataLine(keyboard_octave, editor_octave)
     }
   }
+
+  // キー毎の表示処理
   set_dataLine(keyboard_octave ,editor_octave){
     const keys = keyboard_octave.querySelectorAll(':scope > *')
     for(const key of keys){
@@ -25,7 +35,7 @@ export class Editor{
     }
   }
 
-  static set_addSize(size){console.log(size)
+  static set_addSize(size){
     Element.elm_editor.style.setProperty('padding-right', `${size}px`, '')
   }
 }

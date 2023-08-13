@@ -54,6 +54,7 @@
   background-color: white;
   background-image: linear-gradient(to left, var(--editor-line) 1px, transparent 1px);
   background-size: var(--time-size) 100%;
+  overflow:hidden;
 }
 
 .editor .octave > *[data-status='active']{
