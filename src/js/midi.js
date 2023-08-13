@@ -1,3 +1,5 @@
+import { Element } from './element.js'
+
 /*
   Ex)
   str : "T32O3CDEFGAB04C"
@@ -147,7 +149,7 @@ export class Midi{
     const destination   = audioContext.createAnalyser()
     const oscillator    = audioContext.createOscillator()
     const gain          = audioContext.createGain()
-    oscillator.type     = "square"
+    oscillator.type     = Element.oscillator_type
     destination.fftSize = 2048
     destination.connect(audioContext.destination)
 

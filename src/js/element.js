@@ -22,4 +22,8 @@ export class Element{
     return 11
   }
 
+  static get oscillator_type(){
+    return document.querySelector(`[name='oscillator_type']`).value
+  }
+
 }

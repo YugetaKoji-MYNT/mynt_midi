@@ -3,6 +3,7 @@
 @import 'editor.css';
 @import 'timeline.css';
 @import 'header.css';
+@import 'control.css';
 
 :root{
   --key-width     : 100px;
