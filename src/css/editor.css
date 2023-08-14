@@ -2,6 +2,7 @@
   width  : 100%;
   overflow:auto;
   -ms-overflow-style: none;
+  position:relative;
 }
 .editor::-webkit-scrollbar{
   display:none;
