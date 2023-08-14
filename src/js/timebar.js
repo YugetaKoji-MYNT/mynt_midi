@@ -22,7 +22,9 @@ export class Timebar{
 
   set_event(){
     // scroll
-    Timebar.elm_timebar_area.addEventListener('scroll', Event.scroll_sync_timeline)
+    if(Timebar.elm_timebar_area){
+      Timebar.elm_timebar_area.addEventListener('scroll', Event.scroll_sync_timeline)
+    }
     // drag
     window.addEventListener('mousedown' , this.mousedown)
     window.addEventListener('mousemove' , this.mousemove.bind(this))

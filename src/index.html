@@ -40,19 +40,23 @@
     <textarea name='midi-string'></textarea>
   </div>
 
-  <div class='midi-frame' data-type='timeline'>
+  <div class='midi-frame no-select' data-type='timeline'>
     <div class='keyboard-head'></div>
-    <div class='timeline'></div>
+    <div class='timeline'>
+      <div class='timebar-scroll'>
+        <svg class='timebar' src='img/icon/timebar.svg'></svg>
+      </div>
+    </div>
   </div>
-  <div class='midi-frame' data-type='timebar'>
+  <!-- <div class='midi-frame' data-type='timebar'>
     <div class='timebar-left'></div>
     <div class='timebar-area'>
       <div class='timebar-scroll'>
         <svg class='timebar' src='img/icon/timebar.svg'></svg>
       </div>
     </div>
-  </div>
-  <div class='midi-frame' data-type='editor'>
+  </div> -->
+  <div class='midi-frame no-select' data-type='editor'>
     <div class='keyboard'></div>
     <div class='editor'></div>
   </div>

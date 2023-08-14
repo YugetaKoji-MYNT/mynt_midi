@@ -1,3 +1,8 @@
+.midi-frame[data-type='timeline']{
+  position:relative;
+  height:50px;
+}
+
 section.midi-frame{
   height : var(--key-height);
   border-bottom-width:0;

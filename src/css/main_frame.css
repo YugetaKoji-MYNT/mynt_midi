@@ -8,9 +8,6 @@
   grid-template-columns:var(--key-width) 1fr;
   background-color:white;
 }
-.midi-frame[data-type='timeline']{
-  height:50px;
-}
 .midi-frame[data-type='timebar']{
   height:30px;
   border:1px solid transparent;

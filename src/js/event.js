@@ -68,6 +68,8 @@ export class Event{
     Element.elm_timeline.scrollLeft     = pos.x
     Element.elm_editor.scrollTop        = pos.y
     Element.elm_editor.scrollLeft       = pos.x
-    Timebar.elm_timebar_area.scrollLeft = pos.x
+    if(Timebar.elm_timebar_area){
+      Timebar.elm_timebar_area.scrollLeft = pos.x
+    }
   }
 }

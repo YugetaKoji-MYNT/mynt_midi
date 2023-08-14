@@ -45,7 +45,8 @@ table{
   border-collapse:collapse;
 }
 
-.no-select{
+.no-select,
+.no-select *{
   -webkit-user-select : none;
      -moz-user-select : none;
       -ms-user-select : none;

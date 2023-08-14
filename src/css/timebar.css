@@ -6,7 +6,12 @@
 .timebar-area::-webkit-scrollbar{
   display:none;
 }
-.timebar-area .timebar{
+.timebar-left{
+  border-right:1px solid black;
+}
+
+
+.timebar{
   width:30px;
   height:30px;
   display:block;
@@ -15,21 +20,19 @@
   left:0;
   transform:translate(-50%,-50%);
   cursor:pointer;
-  /* filter:drop-shadow(2px 2px 1px rgba(0,0,0,0.3)); */
 }
-.timebar-area .timebar:hover{
+.timebar:hover{
   fill:orange;
 }
-.timebar-area .timebar:active{
+.timebar:active{
   fill:red;
 }
-.timebar-area .timebar-scroll{
-  position:relative;
-  height:100%;
-}
-
-.timebar-left{
-  border-right:1px solid black;
+.timebar-scroll{
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:30px;
+  z-index:100;
 }
 
 .editor .line{
