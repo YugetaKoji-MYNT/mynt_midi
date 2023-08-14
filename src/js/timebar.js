@@ -20,6 +20,9 @@ export class Timebar{
   static get elm_timebar_line(){
     return Element.elm_editor.querySelector(`:scope > .line`)
   }
+  static get elm_mmdd(){
+    return document.querySelector(`input[name='mmdd']`)
+  }
 
   set_event(){
     // scroll
@@ -27,11 +30,9 @@ export class Timebar{
       Timebar.elm_timebar_area.addEventListener('scroll', Event.scroll_sync_timeline)
     }
     // drag
-    window.addEventListener('mousedown' , this.mousedown)
+    window.addEventListener('mousedown' , this.mousedown.bind(this))
     window.addEventListener('mousemove' , this.mousemove.bind(this))
-    window.addEventListener('mouseup'   , this.mouseup)
-    // timeline-click
-    Element.elm_timeline.addEventListener('click' , this.click_timeline.bind(this))
+    window.addEventListener('mouseup'   , this.mouseup.bind(this))
   }
 
   // 縦棒ライン
@@ -49,12 +50,19 @@ export class Timebar{
   }
 
   mousedown(e){
-    const elm = e.target.closest('.timebar')
-    if(!elm){return}
-    const left = elm.style.getPropertyValue('left')
+    if(!e.target.closest('.timebar')
+    && !e.target.closest('.timeline')){return}
+    let left
+    if(e.target.closest('.timebar')){
+      left = Timebar.elm_timebar_icon.style.getPropertyValue('left')
+      left = left ? Number(left.replace('px','')) : 0
+    }
+    else if(e.target.closest('.timeline')){
+      left = this.click_timeline(e)
+    }
     Timebar.click_data = {
       mouse_x : e.pageX,
-      left    : left ? Number(left.replace('px','')) : 0
+      left    : left
     }
   }
   mousemove(e){
@@ -69,6 +77,7 @@ export class Timebar{
   set_bar_pos(left){
     Timebar.elm_timebar_icon.style.setProperty('left',`${left}px`,'')
     this.follow_line(left)
+    this.set_mmdd(left)
   }
 
   mouseup(e){
@@ -81,6 +90,17 @@ export class Timebar{
     const rect = Element.elm_timeline.getBoundingClientRect()
     const left = this.get_pos(e.pageX - rect.left)
     this.set_bar_pos(left)
+    return left
+  }
+
+  set_mmdd(left){
+    // console.log(Timeline.sec,Timeline.msec)
+    const sec_size  = Timeline.msec * 10
+    const sec       = ('00' + Math.floor(left / sec_size)).slice(-2)
+    const msec      = ('000'+ Math.floor((left - (sec * sec_size)) *2 )).slice(-3)
+    // const msec_time = left - (sec * sec_size)
+    // const msec      = Math.floor(msec_time / Timeline.msec)
+    Timebar.elm_mmdd.value = `${sec}.${msec}`
   }
 
   static set_width(size){
