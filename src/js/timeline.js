@@ -32,6 +32,9 @@ export class Timeline{
     Css.set_css(':root','--time-msec', `${size}px`)
     return Number(size)
   }
+  static get msec_step(){
+    return Number(Css.get_css(':root' , '--time-msec-step') || 1)
+  }
   static get elm_numbers(){
     return Element.elm_timeline.querySelectorAll(`.sec,.msec`)
   }
@@ -43,6 +46,10 @@ export class Timeline{
   // 文字列はみ出しサイズ
   static get diff_size(){
     return Element.elm_timeline.scrollWidth - Timeline.sec
+  }
+
+  static get scale_size(){
+    return Timeline.msec / Timeline.msec_step
   }
 
   // static view_second(){

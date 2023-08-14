@@ -1,5 +1,6 @@
-import { Event }   from './event.js'
-import { Element } from './element.js'
+import { Event }    from './event.js'
+import { Element }  from './element.js'
+import { Timeline } from './timeline.js'
 
 export class Timebar{
   constructor(){
@@ -29,6 +30,8 @@ export class Timebar{
     window.addEventListener('mousedown' , this.mousedown)
     window.addEventListener('mousemove' , this.mousemove.bind(this))
     window.addEventListener('mouseup'   , this.mouseup)
+    // timeline-click
+    Element.elm_timeline.addEventListener('click' , this.click_timeline.bind(this))
   }
 
   // 縦棒ライン
@@ -56,14 +59,28 @@ export class Timebar{
   }
   mousemove(e){
     if(!Timebar.click_data){return}
-    let left = Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x)
+    const left = this.get_pos(Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x))
+    this.set_bar_pos(left)
+  }
+  get_pos(left){
     left = left > 0 ? left : 0
+    return Math.round(left / Timeline.scale_size) * Timeline.scale_size
+  }
+  set_bar_pos(left){
     Timebar.elm_timebar_icon.style.setProperty('left',`${left}px`,'')
     this.follow_line(left)
   }
+
   mouseup(e){
     if(!Timebar.click_data){return}
     delete Timebar.click_data
+  }
+
+  click_timeline(e){
+    if(e.target.closest('.timebar')){return}
+    const rect = Element.elm_timeline.getBoundingClientRect()
+    const left = this.get_pos(e.pageX - rect.left)
+    this.set_bar_pos(left)
   }
 
   static set_width(size){

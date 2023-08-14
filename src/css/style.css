@@ -14,6 +14,7 @@
   --editor-height : 500px;
   --time-sec      : 1200px;
   --time-msec     : 50px;
+  --time-msec-step : 5;
   --octave-size   : 20px;
 }
 

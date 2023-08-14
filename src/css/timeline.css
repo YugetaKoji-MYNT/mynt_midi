@@ -18,6 +18,10 @@ section.midi-frame{
   position:relative;
   overflow-x : auto;
   -ms-overflow-style: none;
+  background-color:white;
+}
+.timeline:hover{
+  background-color:#efefff;
 }
 .timeline::before,
 .timeline::after{
@@ -32,13 +36,13 @@ section.midi-frame{
 }
 .timeline::before{
   height:40%;
-  background-color: white;
+  /* background-color: white; */
   background-size: var(--time-msec) 50%;
 }
 .timeline::after{
   height:20%;
-  background-color: white;
-  background-size: calc(var(--time-msec) / 5) 50%;
+  /* background-color: white; */
+  background-size: calc(var(--time-msec) / var(--time-msec-step)) 50%;
 }
 .timeline::-webkit-scrollbar{
   display: none;
