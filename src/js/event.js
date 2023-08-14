@@ -1,4 +1,5 @@
 import { Element } from './element.js'
+import { Timebar } from './timebar.js'
 
 export class Event{
   constructor(){
@@ -67,6 +68,6 @@ export class Event{
     Element.elm_timeline.scrollLeft     = pos.x
     Element.elm_editor.scrollTop        = pos.y
     Element.elm_editor.scrollLeft       = pos.x
-    Element.elm_timebar_area.scrollLeft = pos.x
+    Timebar.elm_timebar_area.scrollLeft = pos.x
   }
 }

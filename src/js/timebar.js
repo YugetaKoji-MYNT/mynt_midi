@@ -1,15 +1,51 @@
-import { Element } from './element.js'
+import { Event } from './event.js'
 
 export class Timebar{
   constructor(){
-
+    this.set_event()
   }
-  set_event(){
 
+  static get elm_timebar_area(){
+    return document.querySelector(`.timebar-area`)
+  }
+  static get elm_timebar_scroll(){
+    return document.querySelector(`.timebar-scroll`)
+  }
+  static get elm_timebar_icon(){
+    return document.querySelector(`.timebar`)
+  }
+
+  set_event(){
+    // scroll
+    Timebar.elm_timebar_area.addEventListener('scroll', Event.scroll_sync_timeline)
+    // drag
+    window.addEventListener('mousedown' , Timebar.mousedown)
+    window.addEventListener('mousemove' , Timebar.mousemove)
+    window.addEventListener('mouseup'   , Timebar.mouseup)
+  }
+
+  static mousedown(e){
+    const elm = e.target.closest('.timebar')
+    if(!elm){return}
+    const left = elm.getAttribute('data-left')
+    Timebar.click_data = {
+      mouse_x : e.pageX,
+      left    : left ? Number(left) : 0,
+    }
+  }
+  static mousemove(e){
+    if(!Timebar.click_data){return}
+    let x = Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x)
+    x = x > 0 ? x : 0
+    Timebar.elm_timebar_icon.style.setProperty('left',`${x}px`,'')
+    Timebar.elm_timebar_icon.setAttribute('data-left' , x)
+  }
+  static mouseup(e){
+    if(!Timebar.click_data){return}
+    delete Timebar.click_data
   }
 
   static set_width(size){
-    // console.log(Element.elm_editor.offsetWidth, Element.elm_editor.scrollWidth)
-    Element.elm_timebar_scroll.style.setProperty('width',`${size}px`,'')
+    Timebar.elm_timebar_scroll.style.setProperty('width',`${size}px`,'')
   }
 }

@@ -1,6 +1,6 @@
 .timebar-area{
   overflow-y:visible;
-  overflow-x:hidden;
+  overflow-x:scroll;
   -ms-overflow-style: none;
 }
 .timebar-area::-webkit-scrollbar{
@@ -9,6 +9,7 @@
 .timebar-area .timebar{
   width:40px;
   height:40px;
+  display:block;
   position:absolute;
   top:50%;
   left:0;

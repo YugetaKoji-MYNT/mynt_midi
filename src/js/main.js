@@ -2,6 +2,7 @@ import { Keyboard }  from './keyboard.js'
 import { Editor }    from './editor.js'
 import { Event }     from './event.js'
 import { Timeline }  from './timeline.js'
+import { Timebar }   from './timebar.js'
 import { Controls }  from './controls.js'
 import { SvgImport } from './common/svg_import.js'
 
@@ -20,6 +21,7 @@ function Main(){
     callback : (()=>{
       new Editor()
       new Timeline()
+      new Timebar()
       new Event()
       new Controls()
     })

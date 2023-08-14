@@ -30,11 +30,4 @@ export class Element{
     return document.querySelector(`input[name='time']`)
   }
 
-  static get elm_timebar_area(){
-    return document.querySelector(`.timebar-area`)
-  }
-  static get elm_timebar_scroll(){
-    return document.querySelector(`.timebar-scroll`)
-  }
-
 }
