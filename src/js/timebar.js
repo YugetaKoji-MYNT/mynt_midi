@@ -94,12 +94,10 @@ export class Timebar{
   }
 
   set_mmdd(left){
-    // console.log(Timeline.sec,Timeline.msec)
     const sec_size  = Timeline.msec * 10
-    const sec       = ('00' + Math.floor(left / sec_size)).slice(-2)
-    const msec      = ('000'+ Math.floor((left - (sec * sec_size)) *2 )).slice(-3)
-    // const msec_time = left - (sec * sec_size)
-    // const msec      = Math.floor(msec_time / Timeline.msec)
+    const sec       = Math.floor(left / sec_size)
+    const msec_size = 1000 / sec_size
+    const msec      = ('000'+ Math.floor((left - (sec * sec_size)) * msec_size)).slice(-3)
     Timebar.elm_mmdd.value = `${sec}.${msec}`
   }
 

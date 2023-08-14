@@ -72,4 +72,6 @@
   border-radius:4px;
   text-align:center;
 }
-
+/* .controls [name='play'] input[name='mmdd']::after{
+  content:'sec';
+} */
