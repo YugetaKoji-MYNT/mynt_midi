@@ -27,10 +27,10 @@ export class Timebar{
   static mousedown(e){
     const elm = e.target.closest('.timebar')
     if(!elm){return}
-    const left = elm.getAttribute('data-left')
+    const left = elm.style.getPropertyValue('left')
     Timebar.click_data = {
       mouse_x : e.pageX,
-      left    : left ? Number(left) : 0,
+      left    : left ? Number(left.replace('px','')) : 0
     }
   }
   static mousemove(e){
@@ -38,7 +38,6 @@ export class Timebar{
     let x = Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x)
     x = x > 0 ? x : 0
     Timebar.elm_timebar_icon.style.setProperty('left',`${x}px`,'')
-    Timebar.elm_timebar_icon.setAttribute('data-left' , x)
   }
   static mouseup(e){
     if(!Timebar.click_data){return}
