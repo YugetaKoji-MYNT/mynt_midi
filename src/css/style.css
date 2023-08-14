@@ -1,12 +1,22 @@
 @import 'main_frame.css';
 @import 'keyboard.css';
 @import 'editor.css';
+@import 'timeline.css';
+@import 'header.css';
+@import 'control.css';
+@import 'string.css';
+@import 'timebar.css';
 
 :root{
-  --key-width:100px;
-  --key-height:30px;
+  --key-width     : 100px;
+  --key-height    : 30px;
+  --editor-line   : #aaa;
+  --editor-height : 500px;
+  --time-sec      : 1200px;
+  --time-msec     : 50px;
+  --time-msec-step : 5;
+  --octave-size   : 20px;
 }
-
 
 html,body{
   width               : 100%;
@@ -20,6 +30,8 @@ html,body{
   
 body{
   border              : 1px solid transparent;
+  min-width:1000px;
+  background: linear-gradient(135deg, #fff, #aaa);
 }
 
 *, *:before, *:after {
@@ -34,7 +46,8 @@ table{
   border-collapse:collapse;
 }
 
-.no-select{
+.no-select,
+.no-select *{
   -webkit-user-select : none;
      -moz-user-select : none;
       -ms-user-select : none;
@@ -71,4 +84,8 @@ input[type='number']{
 
 .right{
   text-align         : right;
+}
+
+input,select,textarea{
+  outline:none;
 }
