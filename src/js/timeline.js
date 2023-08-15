@@ -52,17 +52,6 @@ export class Timeline{
     return Timeline.msec / Timeline.msec_step
   }
 
-  // static view_second(){
-  //   const max_sec = Math.ceil(Timeline.fulltime / 1000)
-  //   for(let sec=1; sec<max_sec; sec++){
-  //     const div = document.createElement('div')
-  //     div.classList.add('sec')
-  //     div.textContent = `${sec}.0`
-  //     const x = (this.msec * 10) * sec
-  //     div.style.setProperty('left',`${x}px`,'')
-  //     Element.elm_timeline.appendChild(div)
-  //   }
-  // }
   static view_second(){
     const max_msec = Timeline.fulltime / 100
     for(let i=1; i<=max_msec; i++){

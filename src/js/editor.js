@@ -5,11 +5,17 @@ export class Editor{
   constructor(){
     Editor.clear()
     this.set_octove()
+    this.set_event()
+    Timebar.view_line()
   }
 
   // エディタ内の表示をクリアする
   static clear(){
     Element.elm_editor.innerHTML = ''
+  }
+
+  set_event(){
+    Element.elm_editor.addEventListener('click' , this.click_editor.bind(this))
   }
 
   // オクターブ毎の表示処理
@@ -40,4 +46,35 @@ export class Editor{
     Element.elm_editor.style.setProperty('padding-right', `${size}px`, '')
     Timebar.set_width(Element.elm_editor.scrollWidth + size)
   }
+
+  // エディターをクリックした時の処理
+  click_editor(e){
+    // key-lineクリック以外は処理しない
+    if(!e.target.closest('[data-key]')){return}
+    // console.log(e.target)
+
+    // クリックした座標を取得
+    const rect_editor = Element.elm_editor.getBoundingClientRect()
+    const pos_y = e.pageY - rect_editor.top + document.scrollingElement.scrollTop + Element.elm_editor.scrollTop
+    const pos_x = e.pageX - rect_editor.left + document.scrollingElement.scrollLeft + Element.elm_editor.scrollLeft
+
+    // クリックしたtimeを取得(エディタ面をクリックした座標からtimelineの時間を取得)
+    const time = Timebar.get_pos(pos_x)
+    this.put_note(pos_y , time , 50)
+  }
+
+  get_pos_y(pos_y){
+
+  }
+
+  // 音符を配置
+  put_note(top, left , width){
+    const note = document.createElement('div')
+    note.classList.add('note')
+    note.style.setProperty('left'  , `${left}px`,'')
+    note.style.setProperty('top'   , `${top}px`,'')
+    note.style.setProperty('width' , `${width}px`,'')
+    Element.elm_editor.appendChild(note)
+  }
+
 }
