@@ -1,4 +1,6 @@
 .editor{
+  --size-height: calc(var(--key-height) * 0.5);
+
   width  : 100%;
   overflow:auto;
   -ms-overflow-style: none;
@@ -26,8 +28,6 @@
   border-bottom:0;
 }
 .editor .octave > *[data-type='flat']{
-  --size-height: calc(var(--key-height) * 0.5);
-
   width:100%;
   height:var(--size-height);
   position:absolute;
@@ -61,3 +61,30 @@
 .editor .octave > *[data-status='active']{
   background-color:#fbe9c7;
 }
+
+/* Note */
+.editor .note{
+  position:absolute;
+  height:var(--size-height);
+  cursor:pointer;
+  padding:1px;
+}
+.editor .note::before{
+  content:'';
+  display:block;
+  width:100%;
+  height:100%;
+  border:1px solid red;
+  background-color:#D88;
+  border-radius:4px;
+}
+.editor .note:hover{
+  opacity:0.5;
+}
+.editor .note[data-type='key']{
+  transform:translate(0,50%);
+}
+.editor .note[data-type='flat']{
+  transform:translate(0,-50%);
+}
+

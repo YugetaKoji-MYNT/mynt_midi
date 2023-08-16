@@ -5,7 +5,7 @@ import { Timeline } from './timeline.js'
 export class Timebar{
   constructor(){
     this.set_event()
-    this.view_line()
+    // Timebar.view_line()
   }
 
   static get elm_timebar_area(){
@@ -36,7 +36,7 @@ export class Timebar{
   }
 
   // 縦棒ライン
-  view_line(){
+  static view_line(){
     const line = document.createElement('div')
     line.classList.add('line')
     const height = Element.elm_editor.scrollHeight
@@ -67,10 +67,10 @@ export class Timebar{
   }
   mousemove(e){
     if(!Timebar.click_data){return}
-    const left = this.get_pos(Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x))
+    const left = Timebar.get_pos(Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x))
     this.set_bar_pos(left)
   }
-  get_pos(left){
+  static get_pos(left){
     left = left > 0 ? left : 0
     return Math.round(left / Timeline.scale_size) * Timeline.scale_size
   }
@@ -88,7 +88,7 @@ export class Timebar{
   click_timeline(e){
     if(e.target.closest('.timebar')){return}
     const rect = Element.elm_timeline.getBoundingClientRect()
-    const left = this.get_pos(e.pageX - rect.left)
+    const left = Timebar.get_pos(e.pageX - rect.left)
     this.set_bar_pos(left)
     return left
   }
