@@ -45,7 +45,7 @@ export class Timebar{
   }
 
   // ラインがtimebarに追従する処理
-  follow_line(left){
+  static follow_line(left){
     Timebar.elm_timebar_line.style.setProperty('left',`${left}px`,'')
   }
 
@@ -68,16 +68,18 @@ export class Timebar{
   mousemove(e){
     if(!Timebar.click_data){return}
     const left = Timebar.get_pos(Timebar.click_data.left + (e.pageX - Timebar.click_data.mouse_x))
-    this.set_bar_pos(left)
+    Timebar.set_bar_pos(left)
   }
   static get_pos(left){
     left = left > 0 ? left : 0
     return Math.round(left / Timeline.scale_size) * Timeline.scale_size
   }
-  set_bar_pos(left){
+
+  // timebarの移動処理
+  static set_bar_pos(left){
     Timebar.elm_timebar_icon.style.setProperty('left',`${left}px`,'')
-    this.follow_line(left)
-    this.set_mmdd(left)
+    Timebar.follow_line(left)
+    Timebar.set_mmdd(left)
   }
 
   mouseup(e){
@@ -89,20 +91,16 @@ export class Timebar{
     if(e.target.closest('.timebar')){return}
     const rect = Element.elm_timeline.getBoundingClientRect()
     const left = Timebar.get_pos(e.pageX - rect.left)
-    this.set_bar_pos(left)
+    Timebar.set_bar_pos(left)
     return left
   }
 
-  set_mmdd(left){
+  static set_mmdd(left){
     const sec_size  = Timeline.msec * 10
     const sec       = Math.floor(left / sec_size)
     const msec_size = 1000 / sec_size
     const msec      = ('000'+ Math.floor((left - (sec * sec_size)) * msec_size)).slice(-3)
     Timebar.elm_mmdd.value = `${sec}.${msec}`
-  }
-
-  static set_width(size){
-    Timebar.elm_timebar_scroll.style.setProperty('width',`${size}px`,'')
   }
 
 }

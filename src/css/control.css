@@ -63,6 +63,10 @@
   cursor:pointer;
 }
 .controls [name='play'] svg:hover{
+  opacity:0.5;
+  /* fill:blue; */
+}
+.controls [name='play'] .play[data-status='play'] svg{
   fill:red;
 }
 .controls [name='play'] input[name='mmdd']{

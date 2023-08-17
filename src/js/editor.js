@@ -9,6 +9,10 @@ export class Editor{
     Timebar.view_line()
   }
 
+  static get default_note_width(){
+    return 50
+  }
+
   // エディタ内の表示をクリアする
   static clear(){
     Element.elm_editor.innerHTML = ''
@@ -44,7 +48,7 @@ export class Editor{
 
   static set_addSize(size){
     Element.elm_editor.style.setProperty('padding-right', `${size}px`, '')
-    Timebar.set_width(Element.elm_editor.scrollWidth + size)
+    // Timebar.set_width(Element.elm_editor.scrollWidth + size)
   }
 
   // エディターをクリックした時の処理
@@ -57,57 +61,45 @@ export class Editor{
     const key_elm  = e.target.closest('[data-key]')
     const octave_rect = key_elm.closest('.octave')
     const key_type = key_elm.getAttribute('data-type')
-    // const octave_rect = key_elm.closest('.octave').getBoundingClientRect()
-    // console.log(key_elm)
-    // クリックした座標を取得
-    const editor_rect = Element.elm_editor.getBoundingClientRect()
-
-    console.log(key_elm.offsetTop, octave_rect.offsetTop)
 
     const pos = {
-      x : Editor.get_pos_x(e.pageX - editor_rect.left),
-      // y : Editor.get_pos_y(key_elm.offsetTop),
+      x : Editor.get_pos_x(e.pageX),
       y : Editor.get_pos_y(key_elm.offsetTop + octave_rect.offsetTop),
-      // y : key_elm.offsetTop,
     }
-    // console.log(pos,e.pageX,editor_rect.left,document.scrollingElement.scrollLeft,Element.elm_editor.scrollLeft)
-    // const pos_y = e.pageY - editor_rect.top + document.scrollingElement.scrollTop + Element.elm_editor.scrollTop
-    // const pos_x = e.pageX - editor_rect.left + document.scrollingElement.scrollLeft + Element.elm_editor.scrollLeft
-
     // クリックしたtimeを取得(エディタ面をクリックした座標からtimelineの時間を取得)
-    // const time = Timebar.get_pos_x(pos)
-    this.put_note(pos.y , pos.x , 50 , key_type)
+    this.put_note(pos.y , pos.x , key_type , octave , key)
   }
   static get_pos_x(left){
-    left = left + Element.elm_editor.scrollLeft
-    // left = left + document.scrollingElement.scrollLeft + Element.elm_editor.scrollLeft
+    const editor_rect = Element.elm_editor.getBoundingClientRect()
+    left = left - editor_rect.left + Element.elm_editor.scrollLeft - (Editor.default_note_width / 2)
     left = left < 0 ? 0 : left
     return left
   }
-  static get_pos_y(top){//console.log(top,document.scrollingElement.scrollTop,Element.elm_editor.scrollTop)
-    // top = top + Element.elm_editor.scrollTop,
-    // top = key_rect.top + document.scrollingElement.scrollTop + Element.elm_editor.scrollTop,
+  static get_pos_y(top){
     top = top < 0 ? 0 : top
     return top
   }
 
-  get_octave(elm){
-    const octave = elm.closest('.octave')
-    return octave ? octave.getAttribute('data-octave') : null
-  }
   get_key(elm){
     const elm_key = elm.closest('[data-key]')
     return elm_key ? elm_key.getAttribute('data-key') : null
   }
+  get_octave(elm){
+    const elm_ectave = elm.closest('.octave')
+    return elm_ectave ? elm_ectave.getAttribute('data-octave') : null
+  }
 
   // 音符を配置
-  put_note(top, left , width , type){
+  put_note(top, left , type , octave , key){
+    const width = Editor.default_note_width
     const note = document.createElement('div')
     note.classList.add('note')
-    note.style.setProperty('left'  , `${left}px`,'')
-    note.style.setProperty('top'   , `${top}px`,'')
-    note.style.setProperty('width' , `${width}px`,'')
-    note.setAttribute('data-type' , type)
+    note.style.setProperty('left'   , `${left}px`,'')
+    note.style.setProperty('top'    , `${top}px`,'')
+    note.style.setProperty('width'  , `${width}px`,'')
+    note.setAttribute('data-type'   , type)
+    note.setAttribute('data-octave' , octave)
+    note.setAttribute('data-key'    , key)
     Element.elm_editor.appendChild(note)
   }
 

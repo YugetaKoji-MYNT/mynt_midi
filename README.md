@@ -11,7 +11,7 @@ Author : Yugeta.Koji
 - ブラウザゲームを作る時に、要領の軽いサウンドファイルを実現できる。
 
 # Usage
-- 
-- 
-- 
+- Install
+- Functions
+- Commentary
 

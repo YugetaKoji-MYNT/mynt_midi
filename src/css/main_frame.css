@@ -15,4 +15,5 @@
 }
 .midi-frame[data-type='editor']{
   height:var(--editor-height);
+  overflow:hidden;
 }
