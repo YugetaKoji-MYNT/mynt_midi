@@ -27,14 +27,14 @@ export class Event{
 
   static set_active(octave, key){
     Event.clear_active()
-    const targets = Element.elm_midiFrame.querySelectorAll(`.octave[data-octave='${octave}'] [data-key='${key}'] `)
+    const targets = Element.elm_keyboard.querySelectorAll(`.octave[data-octave='${octave}'] [data-key='${key}'] `)
     for(const target of targets){
       target.setAttribute('data-status' , 'active')
     }
   }
 
   static clear_active(){
-    const actives = Element.elm_midiFrame.querySelectorAll(`[data-status='active']`)
+    const actives = Element.elm_keyboard.querySelectorAll(`[data-status='active']`)
     for(const active of actives){
       active.removeAttribute('data-status')
     }

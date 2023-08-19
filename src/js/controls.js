@@ -7,7 +7,7 @@ export class Controls{
     Controls.set_time()
     this.set_event()
   }
-  set_event(){console.log(Controls.elm_play)
+  set_event(){
     Element.elm_time.addEventListener('change' , this.change_time.bind(this))
     Controls.elm_play.addEventListener('click' , this.click_play.bind(this))
   }
