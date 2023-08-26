@@ -36,7 +36,7 @@ export class Keyboard{
       Element.elm_keyboard.insertAdjacentHTML('afterbegin' ,html)
     }
     this.set_event()
-    this.set_center()
+    // Keyboard.set_center()
     this.finish()
   }
 
@@ -46,7 +46,7 @@ export class Keyboard{
   }
 
   // 初期位置をオクターブ中心にする
-  set_center(){
+  static set_center(){
     Element.elm_keyboard.scrollTop = (Element.elm_keyboard.scrollHeight - Element.elm_keyboard.offsetHeight) / 2
   }
 

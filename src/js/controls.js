@@ -1,6 +1,7 @@
 import { Element }  from './element.js'
 import { Timeline } from './timeline.js'
 import { Timebar }  from './timebar.js'
+import { Player }   from './player.js'
 
 export class Controls{
   constructor(){
@@ -50,6 +51,7 @@ export class Controls{
       default:
         Controls.play_status = 'play'
         this.play()
+        new Player()
         break
     }
   }

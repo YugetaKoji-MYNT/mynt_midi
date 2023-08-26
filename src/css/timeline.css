@@ -56,7 +56,8 @@ section.midi-frame{
   font-weight:bold;
 }
 .timeline .sec::after{
-  content:'s';
+  /* content:'s'; */
+  content:'';
   font-size:12px;
   color:#666;
 }
@@ -69,7 +70,8 @@ section.midi-frame{
   color:#888;
 }
 .timeline .msec::after{
-  content:'ms';
+  /* content:'ms'; */
+  content:'';
   font-size:10px;
   color:#888;
 }

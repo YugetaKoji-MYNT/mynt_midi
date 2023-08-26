@@ -1,22 +1,38 @@
 import { Element }  from './element.js'
 import { Timebar }  from './timebar.js'
 import { Timeline } from './timeline.js'
+import { Css }      from './common/css.js'
 
 export class Editor{
-  constructor(){
+  constructor(callback){
     Editor.clear()
     this.set_octove()
     this.set_event()
     Timebar.view_line()
+    Editor.fit_height()
+    this.callback = callback || null
+    // Editor.scroll_middle()
+    this.finish()
   }
 
   static get default_note_width(){
     return 50
   }
 
+  static get notes(){
+    return Element.elm_editor.querySelectorAll(`.note`)
+  }
+
   // エディタ内の表示をクリアする
   static clear(){
     Element.elm_editor.innerHTML = ''
+  }
+
+  // エディタ内の音符をすべて削除する
+  static note_clear(){
+    for(const note of Editor.notes){
+      note.parentNode.removeChild(note)
+    }
   }
 
   set_event(){
@@ -82,6 +98,13 @@ export class Editor{
   static get_pos_y(top){
     top = top < 0 ? 0 : top
     return top
+  }
+
+  static fit_height(){
+    const footer_size = 30
+    const rect = Element.elm_editor.getBoundingClientRect()
+    const height = window.innerHeight -  rect.top - footer_size
+    Css.set_css(':root', '--editor-height' , `${height}px`)
   }
 
   get_key(elm){
@@ -170,5 +193,38 @@ export class Editor{
     for(const elm of elms){
       elm.removeAttribute('data-status')
     }
+  }
+
+  finish(){
+    if(this.callback){
+      this.callback()
+    }
+  }
+
+  static scroll_middle(){
+    const pos = {
+      min : {x:null,y:null},
+      max : {x:null,y:null}
+    }
+    // console.log(Editor.notes)
+    if(!Editor.notes.length){return}
+    
+    for(const note of Editor.notes){
+      // const ovtave = note.closest(`.octave`)
+      const current = {
+        x : note.offsetLeft,
+        y : note.offsetTop,
+        w : note.offsetWidth,
+        h : note.offsetHeight,
+      }
+      pos.min.x = pos.min.x === null || pos.min.x > current.x ? current.x : pos.min.x
+      pos.min.y = pos.min.y === null || pos.min.y > current.y ? current.y : pos.min.y
+      pos.max.x = pos.max.x === null || pos.max.x < current.x + current.w ? current.x + current.w : pos.max.x
+      pos.max.y = pos.max.y === null || pos.max.y < current.y + current.h ? current.y + current.h : pos.max.y
+    }
+    // console.log(1,pos)
+    console.log((pos.max.y - pos.min.y) / 2)
+    // const top = pos.min.y + ((pos.max.y - pos.min.y) / 2)
+    Element.elm_keyboard.scrollTop = pos.min.y
   }
 }
